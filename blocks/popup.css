@@ -30,7 +30,7 @@
   height: 100vh;
 }
 
-.popup__form-title {
+.form__title {
   margin: 0 64px 54px 36px;
 }
 
@@ -38,6 +38,10 @@
   width: 83%;
   height: 50px;
   margin: 48px 36px 36px;
+  background-color: #000000;
+  color: white;
+  border: none;
+  transition: opacity 0.3s ease;
 }
 
 .form__fieldset {
@@ -52,8 +56,15 @@
   position: relative;
   left: 440px;
   top: -30px;
+  transition: opacity 0.3s ease;
 }
 
 .popup__close-button:hover {
   cursor: pointer;
+  opacity: 0.5;
+}
+
+.popup__button:hover {
+  cursor: pointer;
+  opacity: 0.8;
 }

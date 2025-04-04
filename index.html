@@ -7,7 +7,7 @@
     <meta name="keywords" content="project7 tripleten webDevelopment" />
     <meta name="author" content="Andres Rivas" />
     <link rel="stylesheet" href="./pages/index.css" />
-    <script src="./script/index.js"></script>
+
     <title>Document</title>
   </head>
   <body>
@@ -25,21 +25,21 @@
               class="popup__close-button"
             />
             <div class="popup__body">
-              <form class="popup__form">
-                <h1 class="popup__form-title">Editar perfil</h1>
+              <form class="form">
+                <h1 class="form__title">Editar perfil</h1>
                 <fieldset class="form__fieldset">
                   <input
                     type="text"
                     name="name"
                     id="name"
                     placeholder="Nombre"
-                    class="form__imput"
+                    class="form__input-name"
                   /><input
                     type="text"
                     name="title"
                     id="title"
                     placeholder="Acerca de Mi"
-                    class="form__input"
+                    class="form__input-title"
                   />
                 </fieldset>
                 <button class="popup__button" type="submit">Guardar</button>
@@ -47,7 +47,6 @@
             </div>
           </div>
         </div>
-
         <section class="profile">
           <div class="profile__content">
             <img
@@ -170,5 +169,6 @@
         <p class="footer__text">&copy; 2025 Around The U.S.</p>
       </footer>
     </div>
+    <script src="./script/index.js"></script>
   </body>
 </html>
