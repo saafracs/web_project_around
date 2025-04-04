@@ -37,8 +37,17 @@
   white-space: nowrap;
   overflow: hidden;
 }
+
+.elements__card__image_left {
+  object-position: 20% 0%;
+}
+
+.elements__card__footer-like {
+  transition: opacity 0.3 ease;
+}
 .elements__card__footer-like:hover {
   cursor: pointer;
+  opacity: 0.4;
 }
 
 @media screen and (max-width: 1300px) {

@@ -37,7 +37,7 @@
 .popup__button {
   width: 83%;
   height: 50px;
-  margin: 48px 36px 36px;
+  margin: 19px 36px 36px;
   background-color: #000000;
   color: white;
   border: none;
@@ -67,4 +67,24 @@
 .popup__button:hover {
   cursor: pointer;
   opacity: 0.8;
+}
+
+.form__input {
+  margin-bottom: 30px;
+  width: 83%;
+  padding: 9px;
+  border: none;
+  border-bottom: 1px solid #000000;
+  background-color: #f8f8f8;
+}
+
+@media screen and (max-width: 530px) {
+  .popup__close-button {
+    left: 90%;
+    top: -40px;
+  }
+
+  .popup__content {
+    width: 88%;
+  }
 }
