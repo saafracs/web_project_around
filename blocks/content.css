@@ -1,0 +1,9 @@
+.content {
+  width: 69%;
+}
+
+@media screen and (max-width: 1300px) {
+  .content {
+    width: 100%;
+  }
+}

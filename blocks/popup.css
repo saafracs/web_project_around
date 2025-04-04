@@ -1,0 +1,59 @@
+.popup {
+  color: #000000;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+.popup_opened {
+  display: flex;
+  z-index: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup__content {
+  width: 430px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.popup__overlay {
+  background-color: #000000;
+  position: absolute;
+  opacity: 0.7;
+  z-index: -1;
+  width: 100%;
+  height: 100vh;
+}
+
+.popup__form-title {
+  margin: 0 64px 54px 36px;
+}
+
+.popup__button {
+  width: 83%;
+  height: 50px;
+  margin: 48px 36px 36px;
+}
+
+.form__fieldset {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup__close-button {
+  position: relative;
+  left: 440px;
+  top: -30px;
+}
+
+.popup__close-button:hover {
+  cursor: pointer;
+}
