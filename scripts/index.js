@@ -6,6 +6,42 @@ let nameInput = document.querySelector(".form__input-name");
 let titleInput = document.querySelector(".form__input-title");
 let nameProfile = document.querySelector(".profile-name");
 let titleProfile = document.querySelector(".profile-title");
+let templateCard = document.querySelector(".template__card");
+let containerCards = document.querySelector(".elements");
+
+let initialCard = [
+  {
+    name: "Dragonstone",
+    link: "./images/dragonstone.jpg",
+  },
+  {
+    name: "Kings Landing",
+    link: "./images/kingslanding.jpg",
+  },
+  {
+    name: "Winterfell",
+    link: "./images/winterfell.jpg",
+  },
+  { name: "Dothraki Hut", link: "./images/dothraki.jpg" },
+  {
+    name: "The Wall",
+    link: "./images/the_wall.jpg",
+  },
+  {
+    name: "Pyke",
+    link: "./images/pyke.jpg",
+  },
+];
+
+initialCard.forEach((item) => {
+  let cardElement = templateCard.content.cloneNode(true);
+
+  cardElement.querySelector(".elements__card-image").src = item.link;
+  cardElement.querySelector(".elements__card-image").alt = item.name;
+  cardElement.querySelector(".elements__card-title").textContent = item.name;
+
+  containerCards.append(cardElement);
+});
 
 profileEditButton.addEventListener("click", function () {
   popupProfile.classList.add("popup_opened");
