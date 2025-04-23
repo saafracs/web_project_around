@@ -48,7 +48,6 @@ function createCards(name, link) {
   cardElement.querySelector(".elements__card-title").textContent = name;
 
   let cardLikeButton = cardElement.querySelector(".elements__card-footer-like");
-
   cardLikeButton.addEventListener("click", function () {
     cardLikeButton.classList.toggle("elements__card-footer-like_active");
 
