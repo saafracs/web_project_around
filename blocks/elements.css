@@ -44,10 +44,19 @@
 
 .elements__card-footer-like {
   transition: opacity 0.3 ease;
+  background-image: url(../images/like.svg);
+  background-repeat: no-repeat;
+  width: 21px;
+  height: 19px;
 }
 .elements__card-footer-like:hover {
   cursor: pointer;
   opacity: 0.4;
+}
+
+.elements__card-footer-like_active {
+  background-image: url(../images/liked.svg);
+  background-repeat: no-repeat;
 }
 
 @media screen and (max-width: 1300px) {

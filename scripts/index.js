@@ -38,14 +38,28 @@ let initialCard = [
   },
 ];
 
-initialCard.forEach((item) => {
+// Create Cards
+
+function createCards(name, link) {
   let cardElement = templateCard.content.cloneNode(true);
 
-  cardElement.querySelector(".elements__card-image").src = item.link;
-  cardElement.querySelector(".elements__card-image").alt = item.name;
-  cardElement.querySelector(".elements__card-title").textContent = item.name;
+  cardElement.querySelector(".elements__card-image").src = link;
+  cardElement.querySelector(".elements__card-image").alt = name;
+  cardElement.querySelector(".elements__card-title").textContent = name;
 
-  containerCards.append(cardElement);
+  let cardLikeButton = cardElement.querySelector(".elements__card-footer-like");
+
+  cardLikeButton.addEventListener("click", function () {
+    cardLikeButton.classList.toggle("elements__card-footer-like_active");
+
+    return cardLikeButton;
+  });
+
+  return cardElement;
+}
+
+initialCard.forEach((item) => {
+  containerCards.append(createCards(item.name, item.link));
 });
 
 //Popup Profile
