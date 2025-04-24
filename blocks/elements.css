@@ -30,6 +30,7 @@
   bottom: 0;
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 
 .elements__card-title {
@@ -46,6 +47,7 @@
   transition: opacity 0.3 ease;
   background-image: url(../images/like.svg);
   background-repeat: no-repeat;
+
   width: 21px;
   height: 19px;
 }
