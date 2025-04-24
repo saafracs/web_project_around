@@ -92,7 +92,7 @@ imageFormElement.addEventListener("submit", function (evt) {
 
     popupImage.classList.remove("popup_opened");
 
-    return createCards(imageInputName, imageInputTitle);
+    containerCards.prepend(createCards(imageInputName, imageInputTitle));
   } else {
     alert("Todos los campos son obligatorios");
   }
