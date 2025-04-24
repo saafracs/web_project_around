@@ -13,8 +13,9 @@ Perfil de presentación con galeria de imagenes, permite actualizar el nombre y 
 
 - [x] Diseño responsivo
 - [x] Actualizar nombre y descripción
-- [ ] Editar imagenes
-- [ ] Interactuar con la galeria
+- [x] Editar imagenes
+- [x] Interactuar con la galeria
+- [ ] Guardar información en Base de Datos
 
 ## Visualización
 
