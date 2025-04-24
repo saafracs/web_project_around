@@ -2,7 +2,12 @@ let profileEditButton = document.querySelector(".profile__edit-button");
 let imageAddButton = document.querySelector(".profile__add-button");
 let popupProfile = document.querySelector(".popup_profile");
 let popupImage = document.querySelector(".popup_image");
-let popupCloseButton = popupImage.querySelector(".popup__close-button");
+let popupCloseButtonImage = popupImage.querySelector(
+  ".popup__close-button_image"
+);
+let popupCloseButtonProfile = popupProfile.querySelector(
+  ".popup__close-button_profile"
+);
 let formElement = document.querySelector(".form");
 let imageFormElement = document.querySelector(".form_image");
 let nameInput = document.querySelector(".form__input-name");
@@ -41,17 +46,26 @@ let initialCard = [
 // Create Cards
 
 function createCards(name, link) {
-  let cardElement = templateCard.content.cloneNode(true);
+  let cardElement = templateCard.content
+    .querySelector(".elements__card")
+    .cloneNode(true);
 
   cardElement.querySelector(".elements__card-image").src = link;
   cardElement.querySelector(".elements__card-image").alt = name;
   cardElement.querySelector(".elements__card-title").textContent = name;
 
   let cardLikeButton = cardElement.querySelector(".elements__card-footer-like");
+
   cardLikeButton.addEventListener("click", function () {
     cardLikeButton.classList.toggle("elements__card-footer-like_active");
 
     return cardLikeButton;
+  });
+
+  let removeCard = cardElement.querySelector(".elements__trash");
+
+  removeCard.addEventListener("click", function () {
+    cardElement.remove();
   });
 
   return cardElement;
@@ -67,8 +81,20 @@ profileEditButton.addEventListener("click", function () {
   popupProfile.classList.add("popup_opened");
 });
 
-popupCloseButton.addEventListener("click", function () {
+popupCloseButtonProfile.addEventListener("click", function () {
   popupProfile.classList.remove("popup_opened");
+});
+
+formElement.addEventListener("submit", function (evt) {
+  evt.preventDefault();
+
+  if (nameInput.value !== "" && titleInput.value !== "") {
+    nameProfile.textContent = nameInput.value;
+    titleProfile.textContent = titleInput.value;
+    popupProfile.classList.remove("popup_opened");
+  } else {
+    alert("Todos los campos son obligatorios");
+  }
 });
 
 // Popup Image
@@ -77,7 +103,7 @@ imageAddButton.addEventListener("click", function () {
   popupImage.classList.add("popup_opened");
 });
 
-popupCloseButton.addEventListener("click", function () {
+popupCloseButtonImage.addEventListener("click", function () {
   popupImage.classList.remove("popup_opened");
 });
 
