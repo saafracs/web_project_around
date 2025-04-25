@@ -26,6 +26,8 @@
 .popup__content-full {
   display: flex;
   flex-direction: column;
+  position: relative;
+  top: 5%;
 }
 
 .popup__body-image {
@@ -64,11 +66,6 @@
 
 .popup__body-text {
   color: grey;
-}
-
-.popup__content-full {
-  position: relative;
-  top: 5%;
 }
 
 .popup__close-button_full {
