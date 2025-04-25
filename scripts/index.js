@@ -89,7 +89,7 @@ function createCards(name, link) {
     popupFullImage.classList.add("popup_opened");
 
     popupImageFull.src = link;
-    popupImageText.alt = name;
+    popupImageFull.alt = name;
     popupImageText.textContent = name;
   });
 
