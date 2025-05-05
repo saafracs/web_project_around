@@ -159,3 +159,19 @@ imageFormElement.addEventListener("submit", function (evt) {
     alert("Todos los campos son obligatorios");
   }
 });
+
+// Close popups with ESC and Pressing Overlay
+
+let popupOverlays = document.querySelectorAll(".popup__overlay");
+
+popupOverlays.forEach((item) => {
+  item.addEventListener("click", () => {
+    item.closest(".popup").classList.remove("popup_opened");
+  });
+
+  document.addEventListener("keydown", (evt) => {
+    if (evt.key === "Escape") {
+      item.closest(".popup").classList.remove("popup_opened");
+    }
+  });
+});
