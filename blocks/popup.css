@@ -72,12 +72,23 @@
   top: -50px;
 }
 
+.popup__input_type_error {
+  color: red;
+}
+
+.popup__button_inactive {
+  background-color: transparent;
+  color: black;
+  border: 1px solid black;
+  opacity: 0.15;
+}
+
 .popup__close-button:hover {
   cursor: pointer;
   opacity: 0.5;
 }
 
-.popup__button:hover {
+.popup__button:hover:valid {
   cursor: pointer;
   opacity: 0.8;
 }

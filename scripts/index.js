@@ -119,16 +119,12 @@ popupCloseButtonProfile.addEventListener("click", function () {
 formElement.addEventListener("submit", function (evt) {
   evt.preventDefault();
 
-  if (nameInput.value !== "" && titleInput.value !== "") {
-    nameProfile.textContent = nameInput.value;
-    titleProfile.textContent = titleInput.value;
+  nameProfile.textContent = nameInput.value;
+  titleProfile.textContent = titleInput.value;
 
-    popupProfile.classList.remove("popup_opened");
+  popupProfile.classList.remove("popup_opened");
 
-    formElement.reset();
-  } else {
-    alert("Todos los campos son obligatorios");
-  }
+  formElement.reset();
 });
 
 // Popup Create New Card
@@ -146,18 +142,14 @@ popupCloseButtonImage.addEventListener("click", function () {
 imageFormElement.addEventListener("submit", function (evt) {
   evt.preventDefault();
 
-  if (imageNameInput.value !== "" && imageTitleInput.value !== "") {
-    let imageInputName = imageNameInput.value;
-    let imageInputTitle = imageTitleInput.value;
+  let imageInputName = imageNameInput.value;
+  let imageInputTitle = imageTitleInput.value;
 
-    popupImage.classList.remove("popup_opened");
+  popupImage.classList.remove("popup_opened");
 
-    imageFormElement.reset();
+  imageFormElement.reset();
 
-    containerCards.prepend(createCards(imageInputName, imageInputTitle));
-  } else {
-    alert("Todos los campos son obligatorios");
-  }
+  containerCards.prepend(createCards(imageInputName, imageInputTitle));
 });
 
 // Close popups with ESC and Pressing Overlay
@@ -167,11 +159,13 @@ let popupOverlays = document.querySelectorAll(".popup__overlay");
 popupOverlays.forEach((item) => {
   item.addEventListener("click", () => {
     item.closest(".popup").classList.remove("popup_opened");
+    formElement.reset();
   });
 
   document.addEventListener("keydown", (evt) => {
     if (evt.key === "Escape") {
       item.closest(".popup").classList.remove("popup_opened");
+      formElement.reset();
     }
   });
 });

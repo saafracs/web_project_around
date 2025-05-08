@@ -34,15 +34,28 @@
                     id="name-edit"
                     placeholder="Nombre"
                     class="form__input form__input-name"
-                  /><input
+                    required
+                    minlength="2"
+                    maxlength="40"
+                  />
+                  <span class="form__input_type_error name-edit-error"></span>
+                  <input
                     type="text"
                     name="title"
                     id="title"
                     placeholder="Acerca de Mi"
                     class="form__input form__input-title"
-                  />
+                    required
+                    minlength="2"
+                    maxlength="200"
+                  /><span class="form__input_type_error title-error"></span>
                 </fieldset>
-                <button class="popup__button" type="submit">Guardar</button>
+                <button
+                  class="popup__button popup__button_inactive"
+                  type="submit"
+                >
+                  Guardar
+                </button>
               </form>
             </div>
           </div>
@@ -65,15 +78,25 @@
                     id="name"
                     placeholder="Titulo"
                     class="form__input form__input-name-image"
-                  /><input
-                    type="link"
+                    required
+                    minlength="2"
+                    maxlength="30"
+                  /><span class="form__input_type_error name-error"></span
+                  ><input
+                    type="url"
                     name="link"
                     id="link"
                     placeholder="Enlace a la imagen"
                     class="form__input form__input-title-image"
-                  />
+                    required
+                  /><span class="form__input_type_error link-error"></span>
                 </fieldset>
-                <button class="popup__button" type="submit">Crear</button>
+                <button
+                  class="popup__button popup__button_inactive"
+                  type="submit"
+                >
+                  Crear
+                </button>
               </form>
             </div>
           </div>
@@ -133,6 +156,8 @@
         </div>
       </div>
     </template>
+
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>
