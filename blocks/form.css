@@ -10,6 +10,10 @@
   justify-content: center;
 }
 
+.form__input_type_error {
+  color: red;
+}
+
 .form__input {
   margin-bottom: 30px;
   width: 83%;

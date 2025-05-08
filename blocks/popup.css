@@ -72,10 +72,6 @@
   top: -50px;
 }
 
-.popup__input_type_error {
-  color: red;
-}
-
 .popup__button_inactive {
   background-color: transparent;
   color: black;
