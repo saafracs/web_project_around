@@ -1,14 +1,15 @@
 const showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add("form__input_type_error");
+  inputElement.classList.add("popup__input_type_error");
+  inputElement;
   errorElement.textContent = errorMessage;
-  errorElement.classList.add("form__input-error_active");
+  errorElement.classList.add("popup__input-error_active");
 };
 
 const hideInputError = (formElement, inputElement) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.remove("form__input_type_error");
-  errorElement.classList.remove("form__input-error_active");
+  inputElement.classList.remove("popup__input_type_error");
+  errorElement.classList.remove("popup__input-error_active");
   errorElement.textContent = "";
 };
 
@@ -28,12 +29,12 @@ const hasInvalidInput = (inputList) => {
 
 const toggleButtonState = (inputList, buttonElement) => {
   if (hasInvalidInput(inputList)) {
+    console.log(buttonElement);
     buttonElement.disabled = true;
   } else {
     buttonElement.disabled = false;
   }
 };
-console.log(formElement);
 
 const setEventListeners = (formElement) => {
   const inputList = Array.from(formElement.querySelectorAll(".form__input"));
