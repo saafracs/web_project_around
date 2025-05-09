@@ -114,6 +114,7 @@ profileEditButton.addEventListener("click", function () {
 
 popupCloseButtonProfile.addEventListener("click", function () {
   popupProfile.classList.remove("popup_opened");
+  formElement.reset();
 });
 
 formElement.addEventListener("submit", function (evt) {

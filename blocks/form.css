@@ -1,5 +1,6 @@
 .form__title {
   margin: 0 64px 54px 36px;
+  text-align: center;
 }
 
 .form__fieldset {
@@ -10,15 +11,20 @@
   justify-content: center;
 }
 
-.form__input_type_error {
+.form__span {
   color: red;
+  font-size: 15px;
+  font-weight: 550;
+  width: 83%;
+  margin-bottom: 30px;
 }
 
-.form__input-text {
+.form__input {
   margin-bottom: 30px;
   width: 83%;
   padding: 9px;
   border: none;
+  outline: none;
   color: black;
-  border-bottom: 1px solid #000000;
+  border-bottom: 1.5px solid black;
 }
