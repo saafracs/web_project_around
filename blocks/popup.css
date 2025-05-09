@@ -72,7 +72,7 @@
   top: -50px;
 }
 
-.popup__button_inactive {
+.popup__button:disabled {
   background-color: transparent;
   color: black;
   border: 1px solid black;

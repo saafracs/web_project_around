@@ -28,14 +28,12 @@ const hasInvalidInput = (inputList) => {
 
 const toggleButtonState = (inputList, buttonElement) => {
   if (hasInvalidInput(inputList)) {
-    console.log(buttonElement);
-    buttonElement.classList.add("popup__button_inactive");
     buttonElement.disabled = true;
   } else {
-    buttonElement.classList.remove("popup__button_inactive");
     buttonElement.disabled = false;
   }
 };
+console.log(formElement);
 
 const setEventListeners = (formElement) => {
   const inputList = Array.from(formElement.querySelectorAll(".form__input"));
