@@ -57,6 +57,7 @@ class Card {
 
   _handlerOpenfullImage() {
     openFullImage();
+    console.log(this._name);
   }
 
   createCard() {
