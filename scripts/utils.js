@@ -28,6 +28,7 @@ const initialCard = [
 
 //Open Full Image Popup
 
+const buttonElement = document.querySelector(".popup__button");
 const popupFull = document.querySelector(".popup_full");
 
 function openPopup(popup) {
@@ -48,8 +49,8 @@ function openFullImage(name, link) {
 
 const areaCard = document.querySelector(".elements");
 
+// Create Cards
 //
-
 function createNewCard(name, link) {
   const card = new Card(name, link, ".template__card");
   return card.createCard();
@@ -57,52 +58,34 @@ function createNewCard(name, link) {
 
 //
 
-// {profileEditButton.addEventListener("click", function () {
-//   popupProfile.classList.add("popup_opened");
-// });
+const profileEditButton = document.querySelector(".profile__edit-button");
+const imageAddButton = document.querySelector(".profile__add-button");
 
-// popupCloseButtonProfile.addEventListener("click", function () {
-//   popupProfile.classList.remove("popup_opened");
-//   formElement.reset();
-// });
+const popupProfile = document.querySelector(".popup_profile");
+const popupImage = document.querySelector(".popup_image");
 
-// formElement.addEventListener("submit", function (evt) {
-//   evt.preventDefault();
+profileEditButton.addEventListener("click", function () {
+  buttonElement.disabled = true;
+  popupProfile.classList.add("popup_opened");
+});
 
-//   nameProfile.textContent = nameInput.value;
-//   titleProfile.textContent = titleInput.value;
+imageAddButton.addEventListener("click", function () {
+  buttonElement.disabled = true;
+  popupImage.classList.add("popup_opened");
+});
 
-//   popupProfile.classList.remove("popup_opened");
+//
 
-//   formElement.reset();
-// });
-
-// // Popup Create New Card
-
-// imageAddButton.addEventListener("click", function () {
-//   popupImage.classList.add("popup_opened");
-// });
-
-// popupCloseButtonImage.addEventListener("click", function () {
-//   popupImage.classList.remove("popup_opened");
-// });
-
-// // Create New Card
-
-// imageFormElement.addEventListener("submit", function (evt) {
-//   evt.preventDefault();
-
-//   let imageInputName = imageNameInput.value;
-//   let imageInputTitle = imageTitleInput.value;
-
-//   popupImage.classList.remove("popup_opened");
-
-//   imageFormElement.reset();
-
-//   containerCards.prepend(createCards(imageInputName, imageInputTitle));
-// });
-
-// ;}
-
-// los controladores de eventos y la función que abre/cierra los popup form.
-export { initialCard, createNewCard, areaCard, openFullImage };
+export {
+  initialCard,
+  createNewCard,
+  areaCard,
+  openFullImage,
+  popupFull,
+  profileEditButton,
+  imageAddButton,
+  openPopup,
+  popupProfile,
+  popupImage,
+  buttonElement,
+};

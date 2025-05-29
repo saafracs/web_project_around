@@ -1,35 +1,21 @@
+import {
+  initialCard,
+  createNewCard,
+  areaCard,
+  popupFull,
+  openPopup,
+  profileEditButton,
+  popupProfile,
+  popupImage,
+} from "./utils.js";
+
+import FormValidator from "./FormValidator.js";
 import { Card } from "./Card.js";
-import { initialCard, createNewCard, areaCard } from "./utils.js";
 
-let profileEditButton = document.querySelector(".profile__edit-button");
-let imageAddButton = document.querySelector(".profile__add-button");
-let popupProfile = document.querySelector(".popup_profile");
-let popupImage = document.querySelector(".popup_image");
-let popupFullImage = document.querySelector(".popup_full");
-let popupCloseButtonImage = popupImage.querySelector(
-  ".popup__close-button_image"
-);
-let popupCloseButtonProfile = popupProfile.querySelector(
-  ".popup__close-button_profile"
-);
-let popupCloseButtonFullImage = popupFullImage.querySelector(
-  ".popup__close-button_full"
-);
-let popupImageFull = popupFullImage.querySelector(".popup__body-image");
-let popupImageText = popupFullImage.querySelector(".popup__body-text");
-
-let formElement = document.querySelector(".form");
-let imageFormElement = document.querySelector(".form_image");
-let nameInput = document.querySelector(".form__input-name");
-let titleInput = document.querySelector(".form__input-title");
-let imageNameInput = document.querySelector(".form__input-name-image");
-let imageTitleInput = document.querySelector(".form__input-title-image");
-let nameProfile = document.querySelector(".profile-name");
-let titleProfile = document.querySelector(".profile-title");
-let templateCard = document.querySelector(".template__card");
-let containerCards = document.querySelector(".elements");
-
-//
+const formElement = document.querySelector(".form");
+const formImage = document.querySelector(".form_image");
+const nameProfile = document.querySelector(".profile-name");
+const titleProfile = document.querySelector(".profile-title");
 
 // Create Cards
 
@@ -37,7 +23,7 @@ initialCard.forEach((item) => {
   areaCard.append(createNewCard(item.name, item.link));
 });
 
-// Close popups with ESC and Pressing Overlay
+// Close popups
 
 let popupOverlays = document.querySelectorAll(".popup__overlay");
 
@@ -54,3 +40,70 @@ popupOverlays.forEach((item) => {
     }
   });
 });
+
+const closeFullImage = document.querySelector(".popup__close-button_full");
+const popupCloseButtonProfile = document.querySelector(
+  ".popup__close-button_profile"
+);
+const popupCloseimage = document.querySelector(".popup__close-button_image");
+
+popupCloseButtonProfile.addEventListener("click", function () {
+  popupProfile.classList.remove("popup_opened");
+});
+
+popupCloseimage.addEventListener("click", function () {
+  popupImage.classList.remove("popup_opened");
+});
+
+closeFullImage.addEventListener("click", function () {
+  popupFull.classList.remove("popup_opened");
+});
+
+profileEditButton.addEventListener("click", function () {
+  openPopup(popupProfile);
+});
+
+//
+//
+
+formImage.addEventListener("submit", function (evt) {
+  evt.preventDefault();
+
+  const titleInput = document.querySelector(".form__input-name-image");
+  const linkInput = document.querySelector(".form__input-title-image");
+
+  const newCard = new Card(
+    titleInput.value,
+    linkInput.value,
+    ".template__card",
+    console.log(titleInput, linkInput)
+  );
+
+  popupImage.classList.remove("popup_opened");
+  formImage.reset();
+
+  areaCard.prepend(newCard.createCard());
+});
+
+//
+//
+
+formElement.addEventListener("submit", function (evt) {
+  evt.preventDefault();
+
+  let nameInput = document.querySelector(".form__input-name");
+  let titleInput = document.querySelector(".form__input-title");
+
+  nameProfile.textContent = nameInput.value;
+  titleProfile.textContent = titleInput.value;
+
+  popupProfile.classList.remove("popup_opened");
+
+  formElement.reset();
+});
+
+const formValidatorProfile = new FormValidator(popupProfile);
+formValidatorProfile.enableValidation();
+
+const formValidatorImage = new FormValidator(popupImage);
+formValidatorImage.enableValidation();

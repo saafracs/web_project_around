@@ -16,8 +16,6 @@ class Card {
     const cardImage = this._cardElement.querySelector(".elements__card-image");
     const cardTitle = this._cardElement.querySelector(".elements__card-title");
 
-    console.log(this._cardElement);
-
     cardImage.src = this._link;
     cardImage.alt = this._name;
     cardTitle.textContent = this._name;
@@ -56,8 +54,7 @@ class Card {
   }
 
   _handlerOpenfullImage() {
-    openFullImage();
-    console.log(this._name);
+    openFullImage(this._name, this._link);
   }
 
   createCard() {
