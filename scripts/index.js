@@ -1,5 +1,5 @@
 import {
-  initialCard,
+  initialCards,
   createNewCard,
   areaCard,
   popupFull,
@@ -17,15 +17,15 @@ const formImage = document.querySelector(".form_image");
 const nameProfile = document.querySelector(".profile-name");
 const titleProfile = document.querySelector(".profile-title");
 
-// Create Cards
+// Create Initial Cards
 
-initialCard.forEach((item) => {
+initialCards.forEach((item) => {
   areaCard.append(createNewCard(item.name, item.link));
 });
 
 // Close popups
 
-let popupOverlays = document.querySelectorAll(".popup__overlay");
+const popupOverlays = document.querySelectorAll(".popup__overlay");
 
 popupOverlays.forEach((item) => {
   item.addEventListener("click", () => {
@@ -72,17 +72,12 @@ formImage.addEventListener("submit", function (evt) {
   const titleInput = document.querySelector(".form__input-name-image");
   const linkInput = document.querySelector(".form__input-title-image");
 
-  const newCard = new Card(
-    titleInput.value,
-    linkInput.value,
-    ".template__card",
-    console.log(titleInput, linkInput)
-  );
+  const newCard = createNewCard(titleInput.value, linkInput.value);
 
   popupImage.classList.remove("popup_opened");
   formImage.reset();
 
-  areaCard.prepend(newCard.createCard());
+  areaCard.prepend(newCard);
 });
 
 //
@@ -91,8 +86,8 @@ formImage.addEventListener("submit", function (evt) {
 formElement.addEventListener("submit", function (evt) {
   evt.preventDefault();
 
-  let nameInput = document.querySelector(".form__input-name");
-  let titleInput = document.querySelector(".form__input-title");
+  const nameInput = document.querySelector(".form__input-name");
+  const titleInput = document.querySelector(".form__input-title");
 
   nameProfile.textContent = nameInput.value;
   titleProfile.textContent = titleInput.value;

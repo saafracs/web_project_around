@@ -1,6 +1,6 @@
 import { Card } from "./Card.js";
 
-const initialCard = [
+const initialCards = [
   {
     name: "Dragonstone",
     link: "./images/dragonstone.jpg",
@@ -49,10 +49,10 @@ function openFullImage(name, link) {
 
 const areaCard = document.querySelector(".elements");
 
-// Create Cards
-//
+// Create new Cards
+
 function createNewCard(name, link) {
-  const card = new Card(name, link, ".template__card");
+  const card = new Card(name, link, ".template");
   return card.createCard();
 }
 
@@ -77,7 +77,7 @@ imageAddButton.addEventListener("click", function () {
 //
 
 export {
-  initialCard,
+  initialCards,
   createNewCard,
   areaCard,
   openFullImage,
