@@ -1,10 +1,11 @@
-import { openFullImage } from "./utils.js";
+// import { handleCardClick } from "./utils.js";
 
-class Card {
-  constructor(name, link, templateCard) {
+export default class Card {
+  constructor(name, link, templateCard, handleCardClick) {
     this._name = name;
     this._link = link;
     this._templateCard = templateCard;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -54,7 +55,7 @@ class Card {
   }
 
   _handlerOpenfullImage() {
-    openFullImage(this._name, this._link);
+    this._handleCardClick(this._name, this._link);
   }
 
   createCard() {
@@ -64,5 +65,3 @@ class Card {
     return this._cardElement;
   }
 }
-
-export { Card };

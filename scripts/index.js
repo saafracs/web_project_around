@@ -1,21 +1,47 @@
-import {
-  initialCards,
-  createNewCard,
-  areaCard,
-  popupFull,
-  openPopup,
-  profileEditButton,
-  popupProfile,
-  popupImage,
-} from "./utils.js";
-
+import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
-import { Card } from "./Card.js";
+import PopupWithImage from "./PopupWithImage.js";
+import PopupWithForm from "./PopupWithForm.js";
+import UserInfo from "./UserInfo.js";
 
-const formElement = document.querySelector(".form");
-const formImage = document.querySelector(".form_image");
-const nameProfile = document.querySelector(".profile-name");
-const titleProfile = document.querySelector(".profile-title");
+const initialCards = [
+  {
+    name: "Dragonstone",
+    link: "./images/dragonstone.jpg",
+  },
+  {
+    name: "Kings Landing",
+    link: "./images/kingslanding.jpg",
+  },
+  {
+    name: "Winterfell",
+    link: "./images/winterfell.jpg",
+  },
+  { name: "Dothraki Hut", link: "./images/dothraki.jpg" },
+  {
+    name: "The Wall",
+    link: "./images/the_wall.jpg",
+  },
+  {
+    name: "Pyke",
+    link: "./images/pyke.jpg",
+  },
+];
+
+const userInfo = new UserInfo(".profile-name", ".profile-title");
+
+const popupImage = document.querySelector(".popup_image");
+const popupProfile = document.querySelector(".popup_profile");
+const profileEditButton = document.querySelector(".profile__edit-button");
+
+const areaCard = document.querySelector(".elements");
+
+function createNewCard(name, link) {
+  const card = new Card(name, link, ".template", (name, link) => {
+    popupImageObj.open(name, link);
+  });
+  return card.createCard();
+}
 
 // Create Initial Cards
 
@@ -23,79 +49,34 @@ initialCards.forEach((item) => {
   areaCard.append(createNewCard(item.name, item.link));
 });
 
-// Close popups
-
-const popupOverlays = document.querySelectorAll(".popup__overlay");
-
-popupOverlays.forEach((item) => {
-  item.addEventListener("click", () => {
-    item.closest(".popup").classList.remove("popup_opened");
-    formElement.reset();
-  });
-
-  document.addEventListener("keydown", (evt) => {
-    if (evt.key === "Escape") {
-      item.closest(".popup").classList.remove("popup_opened");
-      formElement.reset();
-    }
-  });
+const popupFormProfile = new PopupWithForm(".popup_profile", (dataUser) => {
+  userInfo.setUserInfo(dataUser);
+  popupFormProfile.close();
 });
-
-const closeFullImage = document.querySelector(".popup__close-button_full");
-const popupCloseButtonProfile = document.querySelector(
-  ".popup__close-button_profile"
-);
-const popupCloseimage = document.querySelector(".popup__close-button_image");
-
-popupCloseButtonProfile.addEventListener("click", function () {
-  popupProfile.classList.remove("popup_opened");
-});
-
-popupCloseimage.addEventListener("click", function () {
-  popupImage.classList.remove("popup_opened");
-});
-
-closeFullImage.addEventListener("click", function () {
-  popupFull.classList.remove("popup_opened");
-});
+popupFormProfile.setEventListeners();
 
 profileEditButton.addEventListener("click", function () {
-  openPopup(popupProfile);
+  popupFormProfile.open();
 });
 
 //
-//
 
-formImage.addEventListener("submit", function (evt) {
-  evt.preventDefault();
+const imageEditButton = document.querySelector(".profile__add-button");
 
-  const titleInput = document.querySelector(".form__input-name-image");
-  const linkInput = document.querySelector(".form__input-title-image");
-
-  const newCard = createNewCard(titleInput.value, linkInput.value);
-
-  popupImage.classList.remove("popup_opened");
-  formImage.reset();
-
+const popupFormImage = new PopupWithForm(".popup_image", ({ name, link }) => {
+  const newCard = createNewCard(name, link);
   areaCard.prepend(newCard);
+  popupFormImage.close();
 });
 
-//
-//
+popupFormImage.setEventListeners();
 
-formElement.addEventListener("submit", function (evt) {
-  evt.preventDefault();
-
-  const nameInput = document.querySelector(".form__input-name");
-  const titleInput = document.querySelector(".form__input-title");
-
-  nameProfile.textContent = nameInput.value;
-  titleProfile.textContent = titleInput.value;
-
-  popupProfile.classList.remove("popup_opened");
-
-  formElement.reset();
+imageEditButton.addEventListener("click", function () {
+  popupFormImage.open();
 });
+
+const popupImageObj = new PopupWithImage(".popup_full");
+popupImageObj.setEventListeners();
 
 const formValidatorProfile = new FormValidator(popupProfile);
 formValidatorProfile.enableValidation();
