@@ -25,8 +25,8 @@
               class="popup__close-button popup__close-button_profile"
             />
             <div class="popup__body">
+              <h1 class="popup__title">Editar perfil</h1>
               <form class="form form_profile">
-                <h1 class="form__title">Editar perfil</h1>
                 <fieldset class="form__fieldset">
                   <input
                     type="text"
@@ -70,8 +70,8 @@
               class="popup__close-button popup__close-button_image"
             />
             <div class="popup__body">
+              <h1 class="popup__title">Nuevo lugar</h1>
               <form class="form form_image">
-                <h1 class="form__title">Nuevo lugar</h1>
                 <fieldset class="form__fieldset">
                   <input
                     type="text"
@@ -114,6 +114,61 @@
             <div class="popup__body">
               <img src="#" alt="" class="popup__body-image" />
               <h1 class="popup__body-text"></h1>
+            </div>
+          </div>
+        </div>
+        <div class="popup popup_remove-image">
+          <div class="popup__overlay"></div>
+          <div class="popup__content">
+            <img
+              src="./images/close_icon.svg"
+              alt="close icon"
+              class="popup__close-button"
+            />
+            <div class="popup__body">
+              <h1 class="popup__title popup__title_warning">
+                ¿Quieres eliminar esta imagen?
+              </h1>
+              <h2 class="popup__subtitle">
+                &#9888; Esta acción es irreversible
+              </h2>
+              <button
+                type="submit"
+                class="popup__button popup__button_confirm-remove-image"
+              >
+                Eliminar
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="popup popup_profile-picture-edit">
+          <div class="popup__overlay"></div>
+          <div class="popup__content">
+            <img
+              src="./images/close_icon.svg"
+              alt="close icon"
+              class="popup__close-button"
+            />
+            <div class="popup__body">
+              <h1 class="popup__title">Cambiar foto de perfil</h1>
+              <form class="form form_profile-picture">
+                <fieldset class="form__fieldset">
+                  <input
+                    type="url"
+                    name="change-profile-picture"
+                    class="form__input"
+                    placeholder="Enlace a Foto de Perfil"
+                    id="change-profile-picture"
+                    required
+                  />
+                  <span
+                    class="form__span form__span_type_error link-error"
+                  ></span>
+                </fieldset>
+                <button type="submit" class="popup__button" disabled>
+                  Cambiar
+                </button>
+              </form>
             </div>
           </div>
         </div>

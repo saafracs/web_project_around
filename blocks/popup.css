@@ -15,10 +15,33 @@
   align-items: center;
 }
 
+.popup__title {
+  margin: 0 64px 54px 36px;
+}
+
+.popup__title_warning {
+  margin: 0;
+}
+
+.popup__subtitle {
+  font-size: 17px;
+  color: #780202;
+  margin: 20px 0px 0px 0px;
+}
+
+.popup__body {
+  text-align: center;
+}
+
 .popup__content {
   width: 430px;
   border-radius: 10px;
   background-color: white;
+}
+
+.popup__content-remove-image {
+  display: flex;
+  align-items: center;
 }
 
 .popup__content-full {
