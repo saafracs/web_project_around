@@ -56,13 +56,34 @@
   transition: opacity 0.3s ease;
 }
 
-.profile-pic {
+.profile-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 0 30px 0 0;
+}
+
+.profile-image__pic {
   border-radius: 100%;
   width: 127px;
   height: 127px;
   object-fit: cover;
   object-position: 0% 0%;
+  transition: opacity ease-in-out 0.3s;
+}
+
+.profile-image__icon {
+  background-image: url(../images/edit-pencil.svg);
+  opacity: 0;
+  width: 26px;
+  height: 26px;
+  position: absolute;
+  z-index: 1;
+  transition: opacity ease-in-out 0.3s;
+}
+
+.profile-image:hover {
+  cursor: pointer;
 }
 
 @media screen and (max-width: 1300px) {

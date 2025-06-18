@@ -3,6 +3,7 @@ import FormValidator from "./FormValidator.js";
 import PopupWithImage from "./PopupWithImage.js";
 import PopupWithForm from "./PopupWithForm.js";
 import UserInfo from "./UserInfo.js";
+import Popup from "./Popup.js";
 
 const initialCards = [
   {
@@ -33,6 +34,10 @@ const userInfo = new UserInfo(".profile-name", ".profile-title");
 const popupImage = document.querySelector(".popup_image");
 const popupProfile = document.querySelector(".popup_profile");
 const profileEditButton = document.querySelector(".profile__edit-button");
+const profilePictureContainer = document.querySelector(".profile-image");
+const editIcon = document.querySelector(".profile-image__icon");
+const profilePicture = document.querySelector(".profile-image__pic");
+const profileEditPic = document.querySelector(".popup_profile-picture-edit");
 
 const areaCard = document.querySelector(".elements");
 
@@ -51,12 +56,55 @@ initialCards.forEach((item) => {
 
 const popupFormProfile = new PopupWithForm(".popup_profile", (dataUser) => {
   userInfo.setUserInfo(dataUser);
+  console.log(dataUser);
   popupFormProfile.close();
 });
 popupFormProfile.setEventListeners();
 
 profileEditButton.addEventListener("click", function () {
   popupFormProfile.open();
+});
+
+//
+
+const popupRemoveConfirmation = new Popup(".popup_remove-image");
+popupRemoveConfirmation.setEventListeners();
+
+//
+
+const popupProfilePictureEdit = new PopupWithForm(
+  ".popup_profile-picture-edit",
+  ({ avatar }) => {
+    profilePicture.src = avatar;
+    popupProfilePictureEdit.close();
+  }
+);
+
+profilePictureContainer.addEventListener("click", () => {
+  popupProfilePictureEdit.open();
+});
+
+popupProfilePictureEdit.setEventListeners();
+
+const popupProfilePictureEditForm = new FormValidator(profileEditPic);
+popupProfilePictureEditForm.enableValidation();
+
+// Edit Profile Picture Icon
+
+profilePictureContainer.addEventListener("mouseover", () => {
+  profilePicture.style.opacity = "0.7";
+});
+
+profilePictureContainer.addEventListener("mouseout", () => {
+  profilePicture.style.opacity = "1";
+});
+
+profilePictureContainer.addEventListener("mouseover", () => {
+  editIcon.style.opacity = "1";
+});
+
+profilePictureContainer.addEventListener("mouseout", () => {
+  editIcon.style.opacity = "0";
 });
 
 //

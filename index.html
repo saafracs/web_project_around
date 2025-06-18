@@ -150,19 +150,19 @@
               class="popup__close-button"
             />
             <div class="popup__body">
-              <h1 class="popup__title">Cambiar foto de perfil</h1>
+              <h1 class="popup__title">Cambia foto de perfil</h1>
               <form class="form form_profile-picture">
                 <fieldset class="form__fieldset">
                   <input
                     type="url"
-                    name="change-profile-picture"
+                    name="avatar"
                     class="form__input"
                     placeholder="Enlace a Foto de Perfil"
-                    id="change-profile-picture"
+                    id="avatar"
                     required
                   />
                   <span
-                    class="form__span form__span_type_error link-error"
+                    class="form__span form__span_type_error avatar-error"
                   ></span>
                 </fieldset>
                 <button type="submit" class="popup__button" disabled>
@@ -174,11 +174,14 @@
         </div>
         <section class="profile">
           <div class="profile__content">
-            <img
-              src="./images/profile.jpg"
-              alt="profile pic"
-              class="profile-pic"
-            />
+            <div class="profile-image">
+              <div class="profile-image__icon"></div>
+              <img
+                src="./images/profile.jpg"
+                alt="profile pic"
+                class="profile-image__pic"
+              />
+            </div>
             <div class="profile__info">
               <div class="profile__details">
                 <h2 class="profile-name">Daenerys Targaryen</h2>
