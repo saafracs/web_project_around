@@ -4,30 +4,32 @@ import PopupWithImage from "./PopupWithImage.js";
 import PopupWithForm from "./PopupWithForm.js";
 import UserInfo from "./UserInfo.js";
 import Popup from "./Popup.js";
+import api from "./Api.js";
+import Section from "./Section.js";
 
-const initialCards = [
-  {
-    name: "Dragonstone",
-    link: "./images/dragonstone.jpg",
-  },
-  {
-    name: "Kings Landing",
-    link: "./images/kingslanding.jpg",
-  },
-  {
-    name: "Winterfell",
-    link: "./images/winterfell.jpg",
-  },
-  { name: "Dothraki Hut", link: "./images/dothraki.jpg" },
-  {
-    name: "The Wall",
-    link: "./images/the_wall.jpg",
-  },
-  {
-    name: "Pyke",
-    link: "./images/pyke.jpg",
-  },
-];
+// const initialCards = [
+//   {
+//     name: "Dragonstone",
+//     link: "./images/dragonstone.jpg",
+//   },
+//   {
+//     name: "Kings Landing",
+//     link: "./images/kingslanding.jpg",
+//   },
+//   {
+//     name: "Winterfell",
+//     link: "./images/winterfell.jpg",
+//   },
+//   { name: "Dothraki Hut", link: "./images/dothraki.jpg" },
+//   {
+//     name: "The Wall",
+//     link: "./images/the_wall.jpg",
+//   },
+//   {
+//     name: "Pyke",
+//     link: "./images/pyke.jpg",
+//   },
+// ];
 
 const userInfo = new UserInfo(".profile-name", ".profile-title");
 
@@ -50,14 +52,15 @@ function createNewCard(name, link) {
 
 // Create Initial Cards
 
-initialCards.forEach((item) => {
-  areaCard.append(createNewCard(item.name, item.link));
-});
+// initialCards.forEach((item) => {
+//   areaCard.append(createNewCard(item.name, item.link));
+// });
 
 const popupFormProfile = new PopupWithForm(".popup_profile", (dataUser) => {
-  userInfo.setUserInfo(dataUser);
-  console.log(dataUser);
-  popupFormProfile.close();
+  api.updateUser(dataUser.name, dataUser.about).then(() => {
+    userInfo.setUserInfo(dataUser);
+    popupFormProfile.close();
+  });
 });
 popupFormProfile.setEventListeners();
 
@@ -70,12 +73,15 @@ profileEditButton.addEventListener("click", function () {
 const popupRemoveConfirmation = new Popup(".popup_remove-image");
 popupRemoveConfirmation.setEventListeners();
 
-//
+// new avatar
 
 const popupProfilePictureEdit = new PopupWithForm(
   ".popup_profile-picture-edit",
   ({ avatar }) => {
-    profilePicture.src = avatar;
+    // console.log(avatar);
+    // api.updateAvatar(avatar).then(() => {
+    //   profilePicture.src = avatar;
+    // });
     popupProfilePictureEdit.close();
   }
 );
@@ -112,9 +118,12 @@ profilePictureContainer.addEventListener("mouseout", () => {
 const imageEditButton = document.querySelector(".profile__add-button");
 
 const popupFormImage = new PopupWithForm(".popup_image", ({ name, link }) => {
-  const newCard = createNewCard(name, link);
-  areaCard.prepend(newCard);
-  popupFormImage.close();
+  console.log(name, link);
+  api.createCards(name, link).then(() => {
+    const newCard = createNewCard(name, link);
+    areaCard.prepend(newCard);
+    popupFormImage.close();
+  });
 });
 
 popupFormImage.setEventListeners();
@@ -131,3 +140,25 @@ formValidatorProfile.enableValidation();
 
 const formValidatorImage = new FormValidator(popupImage);
 formValidatorImage.enableValidation();
+
+// api
+
+api.getUser().then((data) => {
+  console.log(data);
+  userInfo.setUserInfo(data);
+});
+
+//
+
+// api.createCards().then((data) => {});
+
+// Server Cards
+
+api.getCards().then((data) => {
+  const cardsServer = data;
+  cardsServer.forEach((cardData) => {
+    areaCard.prepend(createNewCard(cardData.name, cardData.link));
+  });
+});
+
+//

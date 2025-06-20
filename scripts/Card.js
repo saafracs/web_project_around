@@ -1,11 +1,10 @@
-// import { handleCardClick } from "./utils.js";
-
 export default class Card {
-  constructor(name, link, templateCard, handleCardClick) {
+  constructor(name, link, templateCard, handleCardClick, handleCardDelete) {
     this._name = name;
     this._link = link;
     this._templateCard = templateCard;
     this._handleCardClick = handleCardClick;
+    this._handleCardDelete = handleCardDelete;
   }
 
   _getTemplate() {
@@ -35,7 +34,7 @@ export default class Card {
     });
 
     cardRemoveButton.addEventListener("click", () => {
-      this._handlerRemoveCard();
+      this._handleRemoveCard();
     });
 
     cardImage.addEventListener("click", () => {
@@ -50,13 +49,17 @@ export default class Card {
     cardLikeButton.classList.toggle("elements__card-footer-like_active");
   }
 
-  _handlerRemoveCard() {
-    this._cardElement.remove();
+  _handleRemoveCard() {
+    this._handleCardDelete(this._name, this._link);
   }
 
   _handlerOpenfullImage() {
-    this._handleCardClick(this._name, this._link);
+    this._handleCardClick();
   }
+
+  // () {
+  //   this._cardElement.remove();
+  // }
 
   createCard() {
     this._getTemplate();

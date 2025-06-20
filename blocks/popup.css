@@ -7,15 +7,17 @@
   left: 0;
   opacity: 0;
   z-index: -100;
-}
-
-.popup_opened {
+  transition: opacity ease-in-out 0.3s;
   display: flex;
   z-index: 2;
   justify-content: center;
   align-items: center;
+  pointer-events: none;
+}
+
+.popup_opened {
   opacity: 1;
-  transition: opacity ease-in-out 0.3s;
+  pointer-events: visible;
 }
 
 .popup__title {
