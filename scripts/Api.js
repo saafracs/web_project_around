@@ -51,9 +51,11 @@ class Api {
     if (method !== "GET" && method !== "DELETE") {
       config["body"] = JSON.stringify(body);
     }
-    return fetch(`${this._url}${path}`, config).then((response) =>
-      response.json()
-    );
+    return fetch(`${this._url}${path}`, config)
+      .then((response) => response.json())
+      .catch((err) => {
+        console.log(err);
+      });
   }
 }
 
