@@ -87,7 +87,6 @@ function createNewCard(name, link, idCard, isLiked) {
           cardLikeButton.classList.add("elements__card-footer-like_active");
         });
       }
-      console.log(isLiked, cardElement);
     }
   );
   return card.createCard();
